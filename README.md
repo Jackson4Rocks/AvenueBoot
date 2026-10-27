@@ -13,3 +13,5 @@
                                                                                                                              
 ```                                                                                                                             
                                                                                                                              
+AvenueBoot is a project to flash any iso, including Windows, to a drive of your choice. 
+This project was mostly made to flash Windows on Linux, cause thats mostly not easy to do soooo yeah....
