@@ -38,6 +38,7 @@ Note: it creates **UEFI-only** boot media. Old machines that only do legacy BIOS
 
 ```bash
 git clone https://github.com/Jackson4Rocks/AvenueBoot ~/AvenueBoot
+cd ~/AvenueBoot
 chmod +x AvenueBoot.sh
 sudo ./AvenueBoot.sh
 ```
