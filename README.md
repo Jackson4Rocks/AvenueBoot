@@ -1,7 +1,16 @@
 # AvenueBoot
 
-A simple script that turns a USB stick into a **Windows installer**, straight from your Linux machine.
-It formats the USB drive as FAT32, copies the installer files from the ISO, and that's it — no raw disk imaging, no weird hacks.
+```text
+ █████╗ ██╗   ██╗███████╗███╗   ██╗██╗   ██╗███████╗██████╗  ██████╗  ██████╗ ████████╗
+██╔══██╗██║   ██║██╔════╝████╗  ██║██║   ██║██╔════╝██╔══██╗██╔═══██╗██╔═══██╗╚══██╔══╝
+███████║██║   ██║█████╗  ██╔██╗ ██║██║   ██║█████╗  ██████╔╝██║   ██║██║   ██║   ██║
+██╔══██║╚██╗ ██╔╝██╔══╝  ██║╚██╗██║██║   ██║██╔══╝  ██╔══██╗██║   ██║██║   ██║   ██║
+██║  ██║ ╚████╔╝ ███████╗██║ ╚████║╚██████╔╝███████╗██████╔╝╚██████╔╝╚██████╔╝   ██║
+╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═══╝ ╚═════╝ ╚══════╝╚═════╝  ╚═════╝  ╚═════╝    ╚═╝
+```
+
+A small tool that flashes Windows to a USB drive, straight from your Linux machine.
+This project was mostly made to flash Windows on Linux, cause that's mostly not easy to do soooo yeah....
 
 > ### ⚠️ Windows ISOs only
 > AvenueBoot **only works with Windows installation ISOs** (Windows 8.1, 10, or 11 downloaded from Microsoft).
