@@ -9,13 +9,14 @@
 ╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═══╝ ╚═════╝ ╚══════╝╚═════╝  ╚═════╝  ╚═════╝    ╚═╝
 ```
 
-A small tool that flashes Windows to a USB drive, straight from your Linux machine.
+Its a small tool that flashes Windows to a USB drive, using Linux.
 This project was mostly made to flash Windows on Linux, cause that's mostly not easy to do soooo yeah....
 
 > ### ⚠️ Windows ISOs only
-> AvenueBoot **only works with Windows installation ISOs** (Windows 8.1, 10, or 11 downloaded from Microsoft).
-> A Linux ISO will not work — the script will refuse it, because it's built specifically for Windows media.
+> AvenueBoot **will only work with Windows installation ISOs** (Windows 8.1, 10, or 11, or any modded version of Windows really).
+> A Linux ISO will not work, the script will refuse it, because it's built specifically for Windows media.
 > For Linux ISOs, use something like `dd`, Etcher, or Ventoy instead.
+> Future Support may include any ISO but that will be considered with the next version.
 
 ## What it does
 
@@ -25,17 +26,18 @@ This project was mostly made to flash Windows on Linux, cause that's mostly not 
 - If `install.wim` is bigger than 4 GB (common with Windows 11), it splits the file into smaller `.swm` pieces that both FAT32 and Windows Setup understand
 - Ends with a drive that boots in **UEFI mode**
 
-Note: it creates **UEFI-only** boot media. Old machines that only do legacy BIOS boot won't boot this USB. Almost any PC from the last ~10 years is fine.
+Note: it creates **UEFI-only** boot media. Old machines that only do legacy BIOS boot won't boot this USB. Almost any PC from the last ~10 years is fine. Unless it only has legacy and no UEFI.
 
 ## What you need
 
-- A **Windows ISO** (from [microsoft.com](https://www.microsoft.com/software-download/windows11)) — Linux ISOs don't work, see the warning above
+- A **Windows ISO** (take your pick), Linux ISOs don't work, see the warning above
 - A USB drive with at least 8 GB free — **all data on it will be erased**
 - A Linux machine with `sudo` (Ubuntu/Debian, Fedora, Arch, openSUSE, Alpine, Void, and Gentoo are all handled)
 
 ## How to use
 
 ```bash
+git clone https://github.com/Jackson4Rocks/AvenueBoot ~/AvenueBoot
 chmod +x AvenueBoot.sh
 sudo ./AvenueBoot.sh
 ```
@@ -66,11 +68,11 @@ After it finishes, **safely eject the drive** before unplugging it.
 ```
 
 ## Is it safe?
+Well, theres no guarantee about the safety of this, there are chances you can overwrite your Linux drive (the os your currently running), but other than that i would say its working as its supposed to.
+The erase is real tho, there's no undo. But the script does protect you (kinda):
 
-The erase is real — there's no undo. But the script does protect you:
-
-- **Refuses to erase** the disk your running Linux system is on
-- **Refuses to erase** the disk the ISO file itself is stored on (pointless and dangerous)
+- **Refuses to erase** the disk your running Linux system is on (UNSTABLE, CANNOT BE TRUSTED TO DO SUCH)
+- **Refuses to erase** the disk the ISO file itself is stored on (pointless and dangerous) (ALSO UNSTABLE, READ ABOVE)
 - **Requires confirmation** — you must literally type the device path, unless you pass `--yes` (and even then you must have given both `--iso` and `--device` explicitly)
 - **Warns clearly** before anything is wiped, listing exactly which ISO and which device
 - Supports `--dry-run` to do all the checks with zero changes, so you can see what would happen
@@ -89,7 +91,7 @@ Missing dependencies (parted, dosfstools, rsync, wimtools, …) are detected aut
 
 ## FAQ
 
-**Can I use this for my Linux ISO?** No — Windows ISOs only. The script specifically looks for and validates Windows installer structure (`/boot` + `/sources`), and it's designed around how Windows Setup media works.
+**Can I use this for my Linux ISO?** No. Windows ISOs only. The script specifically looks for and validates Windows installer structure (`/boot` + `/sources`), and it's designed around how Windows Setup media works.
 
 **Why FAT32 and not NTFS or just dd the ISO?** FAT32 is what Windows UEFI boot expects out of the box. Copying files (instead of raw-imaging) means the USB stays usable and the big `install.wim` can simply be split to fit.
 
